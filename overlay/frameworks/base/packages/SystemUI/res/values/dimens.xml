@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="minilauncher_icon_width">120px</dimen>
+    <dimen name="minilauncher_icon_height">120px</dimen>
+    <dimen name="minilauncher_row_height">200px</dimen>
+</resources>

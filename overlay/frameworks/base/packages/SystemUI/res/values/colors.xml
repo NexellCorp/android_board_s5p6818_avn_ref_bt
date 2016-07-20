@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="multiwindow_controlbar_background">@color/multiwindow_controlbar_background</drawable>
+    <color name="multiwindow_controlbar_background">#66000000</color>
+    <color name="multiwindow_drag_control_color">#aa3300ff</color>
+</resources>

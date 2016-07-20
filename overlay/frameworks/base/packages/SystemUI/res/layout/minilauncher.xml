@@ -1,0 +1,43 @@
+<com.android.systemui.statusbar.avn.MiniLauncherView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:systemui="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@drawable/multiwindow_controlbar_background"
+    >
+
+    <FrameLayout android:id="@+id/rot0"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:id="@+id/minilauncher"
+            android:animateLayoutChanges="true"
+            >
+
+            <GridView android:id="@+id/all_apps"
+                android:persistentDrawingCache="animation|scrolling"
+                android:alwaysDrawnWithCache="true"
+                android:scrollbars="none"
+                android:drawSelectorOnTop="false"
+                android:listSelector="@drawable/grid_selector"
+                android:numColumns="auto_fit"
+                android:columnWidth="160px"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="10px"
+                android:horizontalSpacing="10px"
+                android:layout_weight="1.0"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</com.android.systemui.statusbar.avn.MiniLauncherView>
