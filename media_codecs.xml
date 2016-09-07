@@ -88,6 +88,7 @@ Only the three quirks included above are recognized at this point:
         <MediaCodec name="OMX.NX.AUDIO_DECODER.FFMPEG.mpeg" type="audio/mpeg" />
         <MediaCodec name="OMX.NX.AUDIO_DECODER.FFMPEG.mpegl1" type="audio/mpeg-L1" />
         <MediaCodec name="OMX.NX.AUDIO_DECODER.FFMPEG.mpegl2" type="audio/mpeg-L2" />
+        <MediaCodec name="OMX.NX.AUDIO_DECODER.FFMPEG.ape" type="audio/ape" />
 
         <!-- Nexell Video Decoder -->
         <MediaCodec name="OMX.NX.VIDEO_DECODER.3gpp" type="video/3gpp" />
