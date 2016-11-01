@@ -7,6 +7,7 @@ RESULT_DIR=${TOP}/result
 export TOP RESULT_DIR
 
 BUILD_ALL=true
+BUILD_2NDBOOT=false
 BUILD_UBOOT=false
 BUILD_KERNEL=false
 BUILD_NXUPDATE=false
@@ -72,6 +73,7 @@ function parse_args()
             -c ) CLEAN_BUILD=true; shift 1 ;;
             -w ) WIFI_DEVICE_NAME=$2; shift 2 ;;
             -t ) case "$2" in
+                    2ndboot ) BUILD_ALL=false; BUILD_2NDBOOT=true ;;
                     u-boot  ) BUILD_ALL=false; BUILD_UBOOT=true ;;
                     kernel  ) BUILD_ALL=false; BUILD_KERNEL=true ;;
                     nxupdate) BUILD_ALL=false; BUILD_NXUPDATE=true ;;
@@ -245,6 +247,68 @@ function apply_uboot_nand_root()
     disable_uboot_sd_root
     enable_uboot_nand_root
 }
+
+function make_2ndboot()
+{
+    if [ ${BUILD_2NDBOOT} == "true" ] || [ ${BUILD_ALL} == "true" ]; then
+        local secondboot_dir=${TOP}/linux/platform/${CHIP_NAME}/boot/release/2ndboot
+        local nsih_dir=${TOP}/linux/platform/${CHIP_NAME}/boot/release/nsih
+        local secondboot_file=
+        local nsih_file=
+        local option_d="-d other"
+        local option_p=
+        local option_b=
+        case ${ROOT_DEVICE_TYPE} in
+            spirom)
+                secondboot_file=${secondboot_dir}/2ndboot_${BOARD_PURE_NAME}_spi.bin
+                nsih_file=${nsih_dir}/nsih_${BOARD_PURE_NAME}_spi.txt
+                option_b="SPI"
+                ;;
+            sd)
+                secondboot_file=${secondboot_dir}/2ndboot_${BOARD_PURE_NAME}_sdmmc.bin
+                nsih_file=${nsih_dir}/nsih_${BOARD_PURE_NAME}_sdmmc.txt
+                option_b="SD"
+                ;;
+            nand)
+                local nand_sizes=$(get_nand_sizes_from_config_file ${BOARD_PURE_NAME})
+                local page_size=$(echo ${nand_sizes} | awk '{print $1}')
+
+                secondboot_file=${secondboot_dir}/2ndboot_${BOARD_PURE_NAME}_nand.bin
+                nsih_file=${nsih_dir}/nsih_${BOARD_PURE_NAME}_nand.txt
+                option_d="-d nand"
+                option_p="-p ${page_size}"
+                ;;
+        esac
+
+        if [ ! -f ${secondboot_file} ]; then
+            echo "can't find secondboot file: ${secondboot_file}!, check ${secondboot_dir}"
+            exit -1
+        fi
+
+        if [ ! -f ${nsih_file} ]; then
+            echo "can't find nsih file: ${nsih_file}!, check ${nsih_dir}"
+            exit -1
+        fi
+
+        local secondboot_out_file=$RESULT_DIR/2ndboot.bin
+
+        vmsg "update 2ndboot: ${secondboot_file}"
+        if [ ${ROOT_DEVICE_TYPE} == "nand" ]; then
+            ${TOP}/linux/platform/common/tools/bin/BOOT_BINGEN_NAND -c ${CHIP_NAME} -t 2ndboot -o ${secondboot_out_file} -i ${secondboot_file} -n ${nsih_file} ${option_p} -f 1 -r 32
+        else
+            ${TOP}/linux/platform/common/tools/bin/BOOT_BINGEN -c ${CHIP_NAME} -t 2ndboot -o ${secondboot_out_file} -i ${secondboot_file} -n ${nsih_file} ${option_p}
+        fi
+    fi
+}
+
+function copy_partitionmap()
+{
+	if [ -f ${TOP}/device/nexell/${CHIP_NAME}_${BOARD_PURE_NAME}/partmap.txt ]; then
+		cp -f ${TOP}/device/nexell/${CHIP_NAME}_${BOARD_PURE_NAME}/partmap.txt  ${RESULT_DIR}/
+	fi
+}
+
+
 
 function build_uboot()
 {
@@ -819,6 +883,8 @@ function post_process()
             query_nand_sizes ${BOARD_NAME}
         fi
 
+		copy_partitionmap
+		make_2ndboot
         make_boot
         make_system
 		make_root
@@ -834,6 +900,7 @@ parse_args $@
 print_args
 export VERBOSE
 export ANDROID_VERSION_MAJOR=$(get_android_version_major)
+mkdir -p ${RESULT_DIR}
 set_android_toolchain_and_check
 CHIP_NAME=$(get_cpu_variant2 ${BOARD_NAME})
 #BOARD_PURE_NAME=${BOARD_NAME%_*}
