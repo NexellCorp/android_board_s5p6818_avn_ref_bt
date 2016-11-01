@@ -747,6 +747,23 @@ function make_boot()
     vmsg "end make_boot"
 }
 
+function make_root()
+{
+        cp ${TOP}/device/nexell/${BOARD_NAME}/init.rc ${RESULT_DIR}/root
+
+        pushd $(pwd)
+        cd ${RESULT_DIR}/root
+        chmod 644 *.prop
+        chmod 644 *.${BOARD_NAME}
+        chmod 644 *.rc
+        popd
+
+        local root_size=$(get_partition_size ${BOARD_NAME} root)
+
+        ${TOP}/out/host/linux-x86/bin/make_ext4fs -s -l ${root_size} ${RESULT_DIR}/root.img ${RESULT_DIR}/root
+	
+}
+
 function make_system()
 {
     vmsg "start make_system"
@@ -804,8 +821,7 @@ function post_process()
 
         make_boot
         make_system
-        make_cache
-        make_userdata
+		make_root
 
         echo "---------- End of post processing"
     fi
