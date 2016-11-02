@@ -196,7 +196,7 @@ on late-init
 
 on post-fs
     # once everything is setup, no need to modify /
-    # mount rootfs rootfs / ro remount
+    mount rootfs rootfs / ro remount
     # mount shared so changes propagate into child namespaces
     mount rootfs rootfs / shared rec
 
@@ -207,6 +207,7 @@ on post-fs
     restorecon_recursive /cache
 
     # This may have been created by the recovery system with odd permissions
+	mkdir /cache/recovery 0770 system cache
     chown system cache /cache/recovery
     chmod 0770 /cache/recovery
 

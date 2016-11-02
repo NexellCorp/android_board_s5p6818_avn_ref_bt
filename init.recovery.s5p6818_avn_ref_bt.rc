@@ -6,18 +6,6 @@ service console /sbin/busybox sh
     group shell log
     seclabel u:r:shell:s0
 
-service wipe_data /sbin/wipe_data.sh
-    class core
-    disabled
-    oneshot
-    user root
-
-service wipe_cache /sbin/wipe_cache.sh
-    class core
-    disabled
-    oneshot
-    user root
-
 on boot
     start console
 

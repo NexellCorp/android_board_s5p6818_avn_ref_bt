@@ -226,10 +226,6 @@ service mon_snd /mon_snd.sh
     class main
     oneshot
 
-service factory_reset /factory_reset.sh
-    disabled
-    oneshot
-
 #service adjlowmem /adj_lowmem.sh
 #    disabled
 #    oneshot

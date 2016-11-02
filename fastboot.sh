@@ -3,5 +3,6 @@ fastboot flash 2ndboot result/2ndboot.bin
 fastboot flash bootloader result/u-boot.bin
 fastboot flash boot result/boot.img
 fastboot flash system result/system.img
-fastboot flash root result/root.img
+fastboot flash cache result/cache.img
+fastboot flash userdata result/userdata.img
 fastboot reboot

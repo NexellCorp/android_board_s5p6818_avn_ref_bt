@@ -5,5 +5,4 @@
 /dev/block/platform/dw_mmc.2/by-num/p5    /misc       emmc      defaults    defaults
 /dev/block/platform/dw_mmc.2/by-num/p6    /recovery   emmc      defaults    defaults
 /dev/block/platform/dw_mmc.2/by-num/p7    /data       ext4      defaults    defaults
-/dev/block/platform/dw_mmc.2/by-num/p3    /root       ext4      defaults    defaults
 /dev/block/platform/dw_mmc.0/by-num/p1    /sdcard     vfat      defaults    defaults
