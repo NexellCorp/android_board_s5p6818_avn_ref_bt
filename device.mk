@@ -103,8 +103,8 @@ PRODUCT_COPY_FILES += \
 # AVN application 
 ################################################################################
 PRODUCT_COPY_FILES += \
-	hardware/samsung_slsi/slsiap/prebuilt/avn_monitor/nx_avn_monitor:system/bin/nx_avn_monitor
-
+    hardware/samsung_slsi/slsiap/prebuilt/avn_monitor/nx_avn_monitor:system/bin/nx_avn_monitor \
+	    hardware/samsung_slsi/slsiap/prebuilt/iap_test/iap_test:system/bin/iap_test
 ################################################################################
 # RearCamera Application
 ################################################################################
