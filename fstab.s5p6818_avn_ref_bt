@@ -8,8 +8,8 @@
 /dev/block/platform/dw_mmc.2/by-num/p7    /data               ext4      noatime,nosuid,nodev,nomblk_io_submit,errors=panic    wait,check
 /devices/platform/dw_mmc.0/mmc_host/mmc1/mmc1 /storage/sdcard1 auto     defaults                   voldmanaged=sdcard1:auto,noemulatedsd
 /devices/platform/nxp-ehci/usb2/2-1/2-1.1     /storage/usbdisk1    vfat      defaults    voldmanaged=usbdisk1:auto,noemulatedsd
-/devices/platform/nxp-ehci/usb2/2-1/2-1.2     /storage/usbdisk2    vfat      defaults    voldmanaged=usbdisk1:auto,noemulatedsd
-/devices/platform/nxp-ehci/usb2/2-1/2-1.3     /storage/usbdisk3    vfat      defaults    voldmanaged=usbdisk1:auto,noemulatedsd
+/devices/platform/nxp-ehci/usb2/2-1/2-1.2     /storage/usbdisk2    vfat      defaults    voldmanaged=usbdisk2:auto,noemulatedsd
+/devices/platform/nxp-ehci/usb2/2-1/2-1.3     /storage/usbdisk3    vfat      defaults    voldmanaged=usbdisk3:auto,noemulatedsd
 
 
 /devices/platform/dwc_otg/usb1/1-1/1-1:1.0             /storage/usbdisk4   vfat      defaults    voldmanaged=usbdisk4:auto,noemulatedsd
