@@ -342,9 +342,6 @@ on post-fs-data
     chmod 0777 /var/lib
 
 on boot
-	# Set default media player to awesome player
-	setprop media.stagefright.use-awesome 1
-
     # basic network init
     ifup lo
     hostname localhost
