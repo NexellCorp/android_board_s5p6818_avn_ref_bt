@@ -1,1 +1,4 @@
 allow kernel self:capability mknod;
+allow kernel device:blk_file create;
+allow kernel device:blk_file setattr;
+allow kernel device:blk_file getattr;

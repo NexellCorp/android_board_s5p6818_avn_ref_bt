@@ -40,19 +40,6 @@ allow platform_app unlabeled:dir search;
 allow platform_app unlabeled:dir remove_name;
 allow platform_app unlabeled:dir setattr;
 
-allow untrusted_app unlabeled:file open;
-allow untrusted_app unlabeled:file read;
-allow untrusted_app unlabeled:file write;
-allow untrusted_app unlabeled:file unlink;
-allow untrusted_app unlabeled:file link;
-allow untrusted_app unlabeled:file getattr;
-allow untrusted_app unlabeled:file lock;
-allow untrusted_app unlabeled:file execute;
-allow untrusted_app unlabeled:file setattr;
-allow untrusted_app unlabeled:file append;
-allow untrusted_app unlabeled:file ioctl;
-allow untrusted_app unlabeled:file rename;
-allow untrusted_app unlabeled:file create;
 
 allow untrusted_app unlabeled:dir open;
 allow untrusted_app unlabeled:dir read;

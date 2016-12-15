@@ -1,0 +1,6 @@
+type mon_snd, domain;
+type mon_snd_exec, file_type, exec_type;
+
+init_daemon_domain(mon_snd)
+
+allow mon_snd mon_snd_exec:file { open execute_no_trans };

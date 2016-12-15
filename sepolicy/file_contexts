@@ -18,3 +18,16 @@
 /dev/block/mmcblk*      u:object_r:block_device:s0
 /dev/block/mmcblk1p7    u:object_r:user_block_device:s0
 /adj_lowmem.sh          u:object_r:adjlowmem_exec:s0
+/system/bin/nx_avn_monitor u:object_r:monitor_exec:s0
+/system/bin/NxRearCamService u:object_r:rearcamservice_exec:s0
+/system/bin/ipod_dev_mgr_server u:object_r:ipod_monitor_exec:s0
+/mon_snd.sh             u:object_r:mon_snd_exec:s0
+/start_deferred.sh      u:object_r:defer_exec:s0
+/dev/ttySAC1		    u:object_r:bluetooth_device:s0
+/dev/nxp-scaler         u:object_r:mediaserver_device:s0
+/dev/nx_vpu             u:object_r:mediaserver_device:s0
+/dev/pixcir_i2c_ts0     u:object_r:untrusted_app_device:s0
+/dev/ttySAC0            u:object_r:shell_device:s0
+# /dev/ttySAC3            u:object_r:platform_app_device:s0
+/dev/ttySAC3            u:object_r:tty_device:s0
+/dev/ttySAC4            u:object_r:platform_app_device:s0

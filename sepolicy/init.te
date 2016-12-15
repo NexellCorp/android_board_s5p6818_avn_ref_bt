@@ -1,1 +1,4 @@
 allow init self:capability sys_module;
+allow init dex2oat_exec:file execute_no_trans;
+allow init self:process setcurrent;
+

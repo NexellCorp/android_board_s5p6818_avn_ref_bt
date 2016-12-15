@@ -1,0 +1,6 @@
+type monitor, domain;
+type monitor_exec, file_type, exec_type;
+
+init_daemon_domain(monitor)
+
+allow monitor monitor_exec:file { open execute_no_trans };

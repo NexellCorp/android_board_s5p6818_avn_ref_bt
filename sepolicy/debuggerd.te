@@ -1,2 +1,2 @@
 #============= debuggerd ==============
-allow debuggerd init:process ptrace;
+allow debuggerd shell_data_file:dir search;

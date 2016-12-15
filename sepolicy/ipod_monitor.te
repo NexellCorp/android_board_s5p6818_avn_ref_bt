@@ -1,0 +1,8 @@
+type ipod_monitor, domain;
+type ipod_monitor_exec, file_type, exec_type;
+
+init_daemon_domain(ipod_monitor)
+
+allow ipod_monitor ipod_monitor_exec:file { open execute_no_trans };
+allow ipod_monitor self:netlink_kobject_uevent_socket create;
+allow ipod_monitor servicemanager:binder call;

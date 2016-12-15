@@ -1,0 +1,6 @@
+type defer, domain;
+type defer_exec, file_type, exec_type;
+
+init_daemon_domain(defer)
+
+allow defer defer_exec:file { open execute_no_trans };

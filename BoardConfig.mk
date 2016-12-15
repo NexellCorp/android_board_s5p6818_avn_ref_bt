@@ -33,7 +33,7 @@ INSTALLED_RADIOIMAGE_TARGET += bootloader
 $(warning INSTALLED_RADIOIMAGE_TARGET: $(INSTALLED_RADIOIMAGE_TARGET))
 
 # certificate
-#PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/nexell/security/s5p6818_avn_ref_bt/release
+PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/nexell/security/s5p6818_avn_ref_bt/release
 
 # opengl
 BOARD_EGL_CFG := device/nexell/s5p6818_avn_ref_bt/egl.cfg
@@ -114,10 +114,10 @@ endif
 SLSIAP_HWC_VERSION := 2
 
 # sepolicy
-#BOARD_SEPOLICY_DIRS := \
+BOARD_SEPOLICY_DIRS += \
 	device/nexell/s5p6818_avn_ref_bt/sepolicy
 
-#BOARD_SEPOLICY_UNION := \
+BOARD_SEPOLICY_UNION += \
 	file_contexts \
 	genfs_contexts \
 	property_contexts \
@@ -127,12 +127,12 @@ SLSIAP_HWC_VERSION := 2
 	device.te \
 	domain.te \
 	file.te \
-	shell.te \
 	mediaserver.te \
 	surfaceflinger.te \
 	system_server.te \
 	init.te \
 	kernel.te \
+	shell.te \
 	servicemanager.te \
 	netd.te \
 	healthd.te \
@@ -143,10 +143,16 @@ SLSIAP_HWC_VERSION := 2
 	unlabeled.te \
 	bootanim.te \
 	adjlowmem.te \
+	monitor.te \
+	rearcamservice.te \
+	ipod_monitor.te \
+	mon_snd.te \
+	defer.te \
+	bluetooth.te \
+	untrusted_app.te \
+	platform_app.te \
 	service_contexts \
 	service.te
-
-
 
 ART_USE_HSPACE_COMPACT=true
 

@@ -3,3 +3,7 @@ allow servicemanager init:dir search;
 allow servicemanager init:file read;
 allow servicemanager init:file open;
 allow servicemanager init:process getattr;
+allow servicemanager rearcamservice:dir search;
+allow servicemanager rearcamservice:file read;
+allow servicemanager rearcamservice:file open;
+allow servicemanager rearcamservice:process getattr;
