@@ -1,1 +1,1 @@
-type adjlowmem_service,           service_manager_type;
+type rearcam_service,             service_manager_type;

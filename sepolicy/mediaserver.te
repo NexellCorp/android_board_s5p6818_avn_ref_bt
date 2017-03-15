@@ -1,3 +1,2 @@
-type mediaserver_device, dev_type, mlstrustedobject;
 allow mediaserver system_server:unix_stream_socket { read write setopt };
-allow mediaserver mediaserver_device:chr_file { read write open ioctl};
+allow mediaserver mediaserver_device:chr_file { read write open ioctl };

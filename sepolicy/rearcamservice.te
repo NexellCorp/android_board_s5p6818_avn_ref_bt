@@ -3,10 +3,18 @@ type rearcamservice_exec, file_type, exec_type;
 
 init_daemon_domain(rearcamservice)
 
+binder_use(rearcamservice)
+binder_call(rearcamservice, binderservicedomain)
+binder_service(rearcamservice)
+
+r_dir_file(rearcamservice, binderservicedomain)
+
 allow rearcamservice rearcamservice_exec:file { open execute_no_trans };
-allow rearcamservice video_device:chr_file { read write  };
-allow rearcamservice video_device:chr_file open;
-allow rearcamservice video_device:chr_file ioctl;
-allow rearcamservice sysfs:file write;
-allow rearcamservice servicemanager:binder call;
-allow rearcamservice servicemanager:binder transfer;
+allow rearcamservice sysfs:file { read write };
+allow rearcamservice video_device:chr_file { open read write ioctl };
+allow rearcamservice mediaserver_device:chr_file { open read write ioctl };
+allow rearcamservice ion_device:chr_file { open read write ioctl };
+allow rearcamservice graphics_device:dir search;
+allow rearcamservice graphics_device:chr_file rw_file_perms;
+
+allow rearcamservice rearcam_service:service_manager add;
